@@ -16,9 +16,11 @@ public class Graph : MonoBehaviour
     private int curResolusion = 0;
     private int curXRange = 0;
     private void Update() {
-        DisplayGraph();
+        SpawnPoints();
+        UpdateGraph();
     }
-    private void DisplayGraph() {
+
+    private void SpawnPoints() {
         if (curResolusion != resolusion || curXRange != xRange){
             curResolusion = resolusion;
             curXRange = xRange;
@@ -26,29 +28,37 @@ public class Graph : MonoBehaviour
                 Destroy(point.gameObject);
             }
             _points = new List<Transform>();
-        } else {
-            return;
-        }
-        Vector3 scale = Vector3.one * 0.2f;
-        Vector3 position = Vector3.zero;
-        for(int i = 0; i < resolusion; i++) {
-            Transform point = Instantiate(pointPrefab, transform);
-            _points.Add(point);
-            position.x = ((i+1.0f) * xRange * 2 / resolusion - xRange);//  定义x轴    
-            position.y = Mathf.Sin(position.x);
-            // position.y = position.x * position.x;
-            // position.z = position.x;
-            //沿坐标轴往左平移一半
-            point.localPosition = position;
-            point.localScale = scale;
-            var pos = position.x/(xRange*2)+0.5f;
-            point.GetComponent<MeshRenderer>().material.color = new Color(pos, pos, pos); 
+
+            Vector3 scale = Vector3.one * 0.2f;
+            Vector3 position = Vector3.zero;
+            for(int i = 0; i < resolusion; i++) {
+
+                Transform point = Instantiate(pointPrefab, transform);
+                point.localScale = scale;
+                _points.Add(point);
+
+                //定义x轴 [0, resolution] -> [-xRange, xRange]
+                position.x = ((i+1.0f) * xRange * 2 / resolusion - xRange);
+                point.localPosition = position;
+
+                //var pos = position.x/(xRange*2)+0.5f;
+                //point.GetComponent<MeshRenderer>().material.color = new Color(pos, pos, pos); 
+            }
         }
     }
-
-    void Start()
+    
+    private void UpdateGraph()
     {
-        
+        for(int i = 0; i < resolusion; i++) {
+            Transform point = _points[i];
+            Vector3 position = point.localPosition;
+            position.y = CalcX(position.x);
+            point.localPosition = position;
+        }
     }
 
+    private float CalcX(float x)
+    {
+        return Mathf.Sin(Mathf.PI *(x + Time.time));
+    }
 }
