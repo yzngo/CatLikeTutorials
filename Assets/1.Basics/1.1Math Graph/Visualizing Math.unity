@@ -164,10 +164,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209a7db533cf76d44a2dedfb2851a387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  functionName: 0
   pointPrefab: {fileID: 2434050090770227575, guid: 15c6ef728ba0e6c4aa0ebc0d48bc01d0,
     type: 3}
-  resolusion: 501
-  xRange: 50
+  resolusion: 60
+  xRange: 8
 --- !u!1 &575762493
 GameObject:
   m_ObjectHideFlags: 0

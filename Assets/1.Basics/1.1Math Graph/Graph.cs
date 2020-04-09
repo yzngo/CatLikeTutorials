@@ -4,48 +4,65 @@ using UnityEngine;
 
 public class Graph : MonoBehaviour
 {
-    public GraphFunctionName functionName;
+    private static readonly float PI = Mathf.PI;
+    private static readonly GraphFunction[] functions = {
+        SineFunction, Sine2DFunction, MultiSineFunction, MultiSine2DFunction, Ripple};
+//---------------------------------------------------------------------------------------------------
+    [SerializeField] private GraphFunctionName functionName;
     [SerializeField] private Transform pointPrefab;
 
     [Range(10,1000)]
-    [SerializeField] private int resolusion = 100;
+    [SerializeField] private int resolusion = 10;
 
     [Range(1,100)]
     [SerializeField] private int xRange = 10;
+//---------------------------------------------------------------------------------------------------
+    //List表示二维数组的方法
+    List<List<Transform>> _points = new List<List<Transform>>();        //List.1
+    private bool _modeChanged = true;
+    private int _curZResolusion = 1;
+    private static int _curXResolusion = 0;
+    private static int _curXRange = 0;
+    private static GraphMode _curMode = GraphMode.Mode1D;
+    private static GraphMode _newMode = GraphMode.Mode1D;
 
-    List<Transform> _points = new List<Transform>();
-    private int curResolusion = 0;
-    private int curXRange = 0;
-
-    static private GraphFunction[] functions = {SineFunction, MultiSineFunction};
+//---------------------------------------------------------------------------------------------------
     private void Update() {
+
         SpawnPoints();
         UpdateGraph();
     }
 
     private void SpawnPoints() {
-        if (curResolusion != resolusion || curXRange != xRange){
-            curResolusion = resolusion;
-            curXRange = xRange;
-            foreach(var point in _points) {
+        if (_curXResolusion != resolusion || _curXRange != xRange || _curMode != _newMode){
+            _curMode = _newMode;
+            _curZResolusion = _curMode == GraphMode.Mode1D ? 1 : resolusion;
+            _curXResolusion = resolusion;
+            _curXRange = xRange;
+            foreach(var points in _points) {
+                foreach(var point in points)
                 Destroy(point.gameObject);
             }
-            _points = new List<Transform>();
+            _points = new List<List<Transform>>();
 
             Vector3 scale = Vector3.one * 0.2f;
             Vector3 position = Vector3.zero;
-            for(int i = 0; i < resolusion; i++) {
 
-                Transform point = Instantiate(pointPrefab, transform);
-                point.localScale = scale;
-                _points.Add(point);
+            for(int z = 0; z < _curZResolusion; z++) {
+                var points = new List<Transform>();             //List.2
+                for(int x = 0; x < resolusion; x++) {
+                    Transform point = Instantiate(pointPrefab, transform);
+                    point.localScale = scale;
+                    points.Add(point);                                  //List.3
 
-                //定义x轴 [0, resolution] -> [-xRange, xRange]
-                position.x = ((i+1.0f) * xRange * 2 / resolusion - xRange);
-                point.localPosition = position;
-
-                //var pos = position.x/(xRange*2)+0.5f;
-                //point.GetComponent<MeshRenderer>().material.color = new Color(pos, pos, pos); 
+                    //定义x轴 [0, resolution] -> [-xRange, xRange]
+                    position.x = ((x+1.0f) * xRange * 2 / resolusion - xRange);
+                    position.z = ((z+1.0f) * xRange * 2 / resolusion - xRange);
+                    point.localPosition = position;
+                    //var pos = position.x/(xRange*2)+0.5f;
+                    //point.GetComponent<MeshRenderer>().material.color = new Color(pos, pos, pos); 
+                }
+                _points.Add(points);                            //List.4
             }
         }
     }
@@ -53,15 +70,13 @@ public class Graph : MonoBehaviour
     private void UpdateGraph()
     {
         GraphFunction f = functions[(int)functionName];
-        var time = Time.time;
-        for(int i = 0; i < resolusion; i++) {
-            Transform point = _points[i];
-            Vector3 position = point.localPosition;
-
-            position.y = f(position.x, time);
-            // position.y = MultiSineFunction(position.x, time);
-
-            point.localPosition = position;
+        var t = Time.time;
+        for(int z = 0; z < _curZResolusion; z++) {
+            for(int x = 0; x < resolusion; x++){
+                Transform point = _points[z][x];
+                Vector3 position = point.localPosition;
+                point.localPosition = f(position.x, position.z, t);
+            }
         }
     }
 
@@ -73,16 +88,51 @@ public class Graph : MonoBehaviour
     //which object you're invoking the method on. 
     //This means that static method invocations are a bit faster, 
     //but it's usually not significant enough to worry about.
-    static float SineFunction(float x, float param)
+    static Vector3 SineFunction(float x, float z, float t)
     {
-        return Mathf.Sin(Mathf.PI *(x + param));
+        _newMode = GraphMode.Mode1D;
+        Vector3 p;
+        p.x = x;
+        p.y = Mathf.Sin(PI *(x + t));
+        p.z = z;
+        return p;
     }
 
-    static float MultiSineFunction(float x, float param) 
+    static Vector3 Sine2DFunction(float x, float z, float t)
     {
-        float y = Mathf.Sin(Mathf.PI * (x + param));
-        y += Mathf.Sin(2f * Mathf.PI * (x + param)) / 2f;
-        return y;
+        _newMode = GraphMode.Mode2D;
+        float y = Mathf.Sin(PI * (x + t));
+        y += Mathf.Sin(PI * (z + t));
+        y *= 0.5f;
+        return new Vector3(x, y, z);
     }
 
+    //能用乘法就不要用除法, 乘法效率比除法高
+    static Vector3 MultiSineFunction(float x, float z, float t) 
+    {
+        _newMode = GraphMode.Mode1D;
+        float y = Mathf.Sin(PI * (x + t));
+        y += Mathf.Sin(2f * PI * (x + t));
+        y *= 0.5f;
+        return new Vector3(x, y, z);
+    }
+
+    static Vector3 MultiSine2DFunction(float x, float z, float t)
+    {
+        _newMode = GraphMode.Mode2D;
+        float y = 4f * Mathf.Sin(PI * (x + z + t * 0.5f));
+        y += Mathf.Sin(PI * (x + t));
+        y += Mathf.Sin(2f * PI * (z + 2f * t)) * 0.5f;
+        y *= 1f / 5.5f;
+        return new Vector3(x, y, z);
+    }
+
+    static Vector3 Ripple(float x, float z, float t)
+    {
+        _newMode = GraphMode.Mode2D;
+        float d = Mathf.Sqrt(x * x + z * z);        // square root 平方根
+        float y = Mathf.Sin(PI * (4f * d - t));
+        y /= 1f + 10f * d;
+        return new Vector3(x, y, z);
+    }
 }
