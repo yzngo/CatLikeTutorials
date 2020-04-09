@@ -41,8 +41,8 @@ public class Graph : MonoBehaviour
             //沿坐标轴往左平移一半
             point.localPosition = position;
             point.localScale = scale;
-
-            point.GetComponent<MeshRenderer>().material.color = new Color(position.x, position.x, position.x); 
+            var pos = position.x/(xRange*2)+0.5f;
+            point.GetComponent<MeshRenderer>().material.color = new Color(pos, pos, pos); 
         }
     }
 
