@@ -6,7 +6,7 @@ public class Graph : MonoBehaviour
 {
     private static readonly float PI = Mathf.PI;
     private static readonly GraphFunction[] functions = {
-        SineFunction, Sine2DFunction, MultiSineFunction, MultiSine2DFunction, Ripple};
+        Sphere, SineFunction, Sine2DFunction, MultiSineFunction, MultiSine2DFunction, Ripple, Cylinder};
 //---------------------------------------------------------------------------------------------------
     [SerializeField] private GraphFunctionName functionName;
     [SerializeField] private Transform pointPrefab;
@@ -72,10 +72,12 @@ public class Graph : MonoBehaviour
         GraphFunction f = functions[(int)functionName];
         var t = Time.time;
         for(int z = 0; z < _curZResolusion; z++) {
+            var v = ((z+1.0f) * xRange * 2 / resolusion - xRange);
             for(int x = 0; x < resolusion; x++){
+                var u = ((x+1.0f) * xRange * 2 / resolusion - xRange);
                 Transform point = _points[z][x];
                 Vector3 position = point.localPosition;
-                point.localPosition = f(position.x, position.z, t);
+                point.localPosition = f(u, v, t);
             }
         }
     }
@@ -134,5 +136,28 @@ public class Graph : MonoBehaviour
         float y = Mathf.Sin(PI * (4f * d - t));
         y /= 1f + 10f * d;
         return new Vector3(x, y, z);
+    }
+    
+    static Vector3 Cylinder(float u, float v, float t)
+    {
+        _newMode = GraphMode.Mode2D;
+        float r = 0.8f + Mathf.Sin(PI * (6f * u + 2f * v + t)) * 0.2f;
+        Vector3 p;
+        p.x = r * Mathf.Sin(PI * u);
+        p.y = v;
+        p.z = r * Mathf.Cos(PI * u);
+        return p;
+    }
+
+    static Vector3 Sphere(float u, float v, float t)
+    {
+        _newMode = GraphMode.Mode2D;
+        Vector3 p;
+        float r = Time.time % 5;
+        float s = r * Mathf.Cos(PI * 0.5f * v);
+        p.x = s * Mathf.Sin(PI * u);
+        p.y = r * Mathf.Sin(PI * 0.5f * v);
+        p.z = s * Mathf.Cos(PI * u);
+        return p;
     }
 }
