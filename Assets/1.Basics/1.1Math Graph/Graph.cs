@@ -6,7 +6,7 @@ public class Graph : MonoBehaviour
 {
     private static readonly float PI = Mathf.PI;
     private static readonly GraphFunction[] functions = {
-        Sphere, SineFunction, Sine2DFunction, MultiSineFunction, MultiSine2DFunction, Ripple, Cylinder};
+        Torus, Sphere, SineFunction, Sine2DFunction, MultiSineFunction, MultiSine2DFunction, Ripple, Cylinder};
 //---------------------------------------------------------------------------------------------------
     [SerializeField] private GraphFunctionName functionName;
     [SerializeField] private Transform pointPrefab;
@@ -157,6 +157,19 @@ public class Graph : MonoBehaviour
         float s = r * Mathf.Cos(PI * 0.5f * v);
         p.x = s * Mathf.Sin(PI * u);
         p.y = r * Mathf.Sin(PI * 0.5f * v);
+        p.z = s * Mathf.Cos(PI * u);
+        return p;
+    }
+
+    static Vector3 Torus(float u, float v, float t)
+    {
+        _newMode = GraphMode.Mode2D;
+        Vector3 p;
+        float r1 = 1f;
+        float r2 = 0.5f;
+        float s = r2 * Mathf.Cos(PI * v) + r1;
+        p.x = s * Mathf.Sin(PI * u);
+        p.y = r2 * Mathf.Sin(PI * v);
         p.z = s * Mathf.Cos(PI * u);
         return p;
     }

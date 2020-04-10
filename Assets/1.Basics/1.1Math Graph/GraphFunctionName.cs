@@ -1,4 +1,5 @@
 ﻿public enum GraphFunctionName {
+    Torus,
     Sphere,
     Sine,
     Sine2D,
