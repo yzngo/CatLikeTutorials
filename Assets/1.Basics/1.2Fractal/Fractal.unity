@@ -341,5 +341,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDepth: 4
   childScale: 0.5
-  mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  spawnProbability: 1
+  meshes:
+  - {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  maxRotationSpeed: 30
+  maxTwist: 10
