@@ -6,6 +6,7 @@ using UnityEngine;
 public class Nucleon : MonoBehaviour
 {
     public float attractionForce;
+    public int direction;
 
     private Rigidbody body;
 
@@ -14,6 +15,10 @@ public class Nucleon : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        body.AddForce(transform.localPosition * -attractionForce);        
+        if (direction == 0) {
+            body.AddForce((transform.localPosition+Vector3.right) * -attractionForce);        
+        } else {
+            body.AddForce((transform.localPosition+Vector3.left) * -attractionForce);        
+        }
     }
 }
