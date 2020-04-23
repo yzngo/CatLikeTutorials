@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/2.Movement/2.1Sliding a Sphere/MyControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/2.Movement/InputActions/MyControls.inputactions'
 
 using System;
 using System.Collections;
