@@ -14,7 +14,8 @@ public class MovingSphere : MonoBehaviour
     [SerializeField, Range(0f, 100f)] private float maxAcceleration = 10f;
     [SerializeField, Range(0f, 100f)] private float maxAirAcceleration = 1f;
     [SerializeField, Range(0f, 10f)] private float jumpHeight = 2f;
-    [SerializeField, Range(0f, 5)] private int maxAirJumps = 0;
+    [SerializeField, Range(0f, 5f)] private int maxAirJumps = 0;
+    [SerializeField, Range(0f, 90f)] private float maxGroundAngle = 25f;
 
     // [SerializeField, Range(0f, 1f)]
     // private float bounciness = 0.5f;
@@ -24,7 +25,12 @@ public class MovingSphere : MonoBehaviour
     private bool desiredJump;
     private bool onGround;
     private int jumpPhase;
+    private float minGroundDotProduct;
+    private Vector3 contactNormal;
 
+    private void OnValidate() {
+        minGroundDotProduct = Mathf.Cos(maxGroundAngle * Mathf.Deg2Rad);
+    }
     private void Awake() {
         body = GetComponent<Rigidbody>();
         // inputActions = new MyControls();
@@ -33,6 +39,7 @@ public class MovingSphere : MonoBehaviour
         // {
         //     Move(ctx.ReadValue<Vector2>());
         // };
+        OnValidate();
     }
 
     private void OnDestroy() {
@@ -105,16 +112,21 @@ public class MovingSphere : MonoBehaviour
         if (onGround) {
             jumpPhase = 0;
         }
+        else {
+            contactNormal = Vector3.up;
+        }
     }
     
     private void Jump() {
         if (onGround || jumpPhase < maxAirJumps) {
             jumpPhase += 1;
             float jumpSpeed = Mathf.Sqrt(-2f * Physics.gravity.y * jumpHeight);
-            if (velocity.y > 0f) {
-                jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
+            float alignedSpeed = Vector3.Dot(velocity, contactNormal);
+            if (alignedSpeed > 0f) {
+                jumpSpeed = Mathf.Max(jumpSpeed - alignedSpeed, 0f);
             }
-            velocity.y += jumpSpeed; 
+            // velocity.y += jumpSpeed; 
+            velocity += contactNormal * jumpSpeed;
         }
     }
 
@@ -140,10 +152,14 @@ public class MovingSphere : MonoBehaviour
     private void EvaluateCollision(Collision collision) {
         for (int i = 0; i < collision.contactCount; i++) {
             Vector3 normal = collision.GetContact(i).normal;
-            onGround |= normal.y >= 0.9f;
+            // onGround |= normal.y >= minGroundDotProduct;
+            if (normal.y >= minGroundDotProduct) {
+                onGround = true;
+                contactNormal = normal;
+            }
         }
     }
-
+    
 
     //Time.fixedDeltaTime is a value to set, not read
     //Time.deltaTime is the amount of time 
