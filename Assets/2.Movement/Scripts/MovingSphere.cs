@@ -23,27 +23,25 @@ public class MovingSphere : MonoBehaviour
     private Vector3 velocity;
     private Vector3 desiredVelocity;
     private bool desiredJump;
-    private bool onGround;
+    private int groundContactCount;
+
+    //readonly property
+    private bool OnGround => groundContactCount > 0;
+    
     private int jumpPhase;
     private float minGroundDotProduct;
     private Vector3 contactNormal;
+    private int stepsSinceLastGrounded;
 
     private void OnValidate() {
         minGroundDotProduct = Mathf.Cos(maxGroundAngle * Mathf.Deg2Rad);
     }
     private void Awake() {
         body = GetComponent<Rigidbody>();
-        // inputActions = new MyControls();
-        // inputActions.Enable();
-        // inputActions.Player.Move.performed += ctx =>
-        // {
-        //     Move(ctx.ReadValue<Vector2>());
-        // };
         OnValidate();
     }
 
     private void OnDestroy() {
-        // inputActions.Disable();
     }
 
     private void Move(Vector2 input) {
@@ -94,7 +92,7 @@ public class MovingSphere : MonoBehaviour
 
     private void FixedUpdate() {
         UpdateState();
-        float acceleration = onGround ? maxAcceleration : maxAirAcceleration;
+        float acceleration = OnGround ? maxAcceleration : maxAirAcceleration;
         float maxSpeedChange = acceleration * Time.deltaTime;
         velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
         velocity.z = Mathf.MoveTowards(velocity.z, desiredVelocity.z, maxSpeedChange);
@@ -103,29 +101,49 @@ public class MovingSphere : MonoBehaviour
             Jump();
         }
         body.velocity = velocity;
-        onGround = false;
+        // onGround = false;
+        ClearState();
     }
+
+    private void ClearState()
+    {
+        // onGround = false;
+        groundContactCount = 0;
+        contactNormal = Vector3.zero;
+    } 
 
     private void UpdateState()
     {
+        stepsSinceLastGrounded += 1;
         velocity = body.velocity;
-        if (onGround) {
+        if (OnGround || SnapToGround()) {
+            stepsSinceLastGrounded = 0;
             jumpPhase = 0;
+            if (groundContactCount > 1) {
+                contactNormal.Normalize();
+            }
         }
         else {
             contactNormal = Vector3.up;
         }
     }
+
+    private bool SnapToGround() 
+    {
+        if (stepsSinceLastGrounded > 1) {
+            return false;
+        }
+        return true;
+    }
     
     private void Jump() {
-        if (onGround || jumpPhase < maxAirJumps) {
+        if (OnGround || jumpPhase < maxAirJumps) {
             jumpPhase += 1;
             float jumpSpeed = Mathf.Sqrt(-2f * Physics.gravity.y * jumpHeight);
             float alignedSpeed = Vector3.Dot(velocity, contactNormal);
             if (alignedSpeed > 0f) {
                 jumpSpeed = Mathf.Max(jumpSpeed - alignedSpeed, 0f);
             }
-            // velocity.y += jumpSpeed; 
             velocity += contactNormal * jumpSpeed;
         }
     }
@@ -137,25 +155,25 @@ public class MovingSphere : MonoBehaviour
         playerInput = Vector2.ClampMagnitude(playerInput, 1f);
         desiredVelocity = new Vector3(playerInput.x, 0f, playerInput.y) * maxSpeed;
         desiredJump |= Input.GetButtonDown("Jump");
-        // Move(playerInput);
+        GetComponent<Renderer>().material.SetColor(
+            "_Color", OnGround ? Color.black : Color.white
+        );
     }
 
     private void OnCollisionEnter(Collision other) {
-        // onGround = true;
         EvaluateCollision(other);
     }
     private void OnCollisionStay(Collision other) {
-        // onGround = true;
         EvaluateCollision(other);
     }
 
     private void EvaluateCollision(Collision collision) {
         for (int i = 0; i < collision.contactCount; i++) {
             Vector3 normal = collision.GetContact(i).normal;
-            // onGround |= normal.y >= minGroundDotProduct;
             if (normal.y >= minGroundDotProduct) {
-                onGround = true;
-                contactNormal = normal;
+                groundContactCount += 1;
+                // onGround = true;
+                contactNormal += normal;
             }
         }
     }
