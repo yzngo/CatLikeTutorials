@@ -18,6 +18,7 @@ public class MovingSphere : MonoBehaviour
     [SerializeField, Range(0f, 90f)] private float maxGroundAngle = 25f;
     [SerializeField, Range(0f, 100f)] private float maxSnapSpeed = 100f;
     [SerializeField, Min(0f)] private float probeDistance = 1f;
+    [SerializeField] private LayerMask probeMask = -1;
 
     // [SerializeField, Range(0f, 1f)]
     // private float bounciness = 0.5f;
@@ -34,6 +35,7 @@ public class MovingSphere : MonoBehaviour
     private float minGroundDotProduct;
     private Vector3 contactNormal;
     private int stepsSinceLastGrounded;
+    private int stepsSinceLastJump;
 
     private void OnValidate() {
         minGroundDotProduct = Mathf.Cos(maxGroundAngle * Mathf.Deg2Rad);
@@ -115,6 +117,7 @@ public class MovingSphere : MonoBehaviour
     private void UpdateState()
     {
         stepsSinceLastGrounded += 1;
+        stepsSinceLastJump += 1;
         velocity = body.velocity;
         if (OnGround || SnapToGround()) {
             stepsSinceLastGrounded = 0;
@@ -130,14 +133,15 @@ public class MovingSphere : MonoBehaviour
 
     private bool SnapToGround() 
     {
-        if (stepsSinceLastGrounded > 1) {
+        if (stepsSinceLastGrounded > 1 || stepsSinceLastJump <= 2) {
             return false;
         }
         float speed = velocity.magnitude;
         if (speed > maxSnapSpeed) {
             return false;
         }
-        if (!Physics.Raycast(body.position, Vector3.down, out RaycastHit hit, probeDistance)) {
+        if (!Physics.Raycast(body.position, Vector3.down, 
+                    out RaycastHit hit, probeDistance, probeMask)) {
             return false;
         }
         if (hit.normal.y < minGroundDotProduct) {
@@ -154,6 +158,7 @@ public class MovingSphere : MonoBehaviour
     
     private void Jump() {
         if (OnGround || jumpPhase < maxAirJumps) {
+            stepsSinceLastJump = 0;
             jumpPhase += 1;
             float jumpSpeed = Mathf.Sqrt(-2f * Physics.gravity.y * jumpHeight);
             float alignedSpeed = Vector3.Dot(velocity, contactNormal);
