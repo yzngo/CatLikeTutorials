@@ -16,6 +16,8 @@ public class MovingSphere : MonoBehaviour
     [SerializeField, Range(0f, 10f)] private float jumpHeight = 2f;
     [SerializeField, Range(0f, 5f)] private int maxAirJumps = 0;
     [SerializeField, Range(0f, 90f)] private float maxGroundAngle = 25f;
+    [SerializeField, Range(0f, 100f)] private float maxSnapSpeed = 100f;
+    [SerializeField, Min(0f)] private float probeDistance = 1f;
 
     // [SerializeField, Range(0f, 1f)]
     // private float bounciness = 0.5f;
@@ -101,13 +103,11 @@ public class MovingSphere : MonoBehaviour
             Jump();
         }
         body.velocity = velocity;
-        // onGround = false;
         ClearState();
     }
 
     private void ClearState()
     {
-        // onGround = false;
         groundContactCount = 0;
         contactNormal = Vector3.zero;
     } 
@@ -132,6 +132,22 @@ public class MovingSphere : MonoBehaviour
     {
         if (stepsSinceLastGrounded > 1) {
             return false;
+        }
+        float speed = velocity.magnitude;
+        if (speed > maxSnapSpeed) {
+            return false;
+        }
+        if (!Physics.Raycast(body.position, Vector3.down, out RaycastHit hit, probeDistance)) {
+            return false;
+        }
+        if (hit.normal.y < minGroundDotProduct) {
+            return false;
+        }
+        groundContactCount = 1;
+        contactNormal = hit.normal;
+        float dot = Vector3.Dot(velocity, hit.normal);
+        if (dot > 0f) {
+            velocity = (velocity - hit.normal * dot).normalized * speed;
         }
         return true;
     }
