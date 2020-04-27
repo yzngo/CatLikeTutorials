@@ -3730,17 +3730,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -6512,17 +6517,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -6780,17 +6790,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -6879,17 +6894,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -9060,17 +9080,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -9159,17 +9184,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -9421,17 +9451,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -9689,17 +9724,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -9794,17 +9834,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -10189,17 +10234,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -11683,17 +11733,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -12647,17 +12702,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -12746,17 +12806,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -12857,17 +12922,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -13930,17 +14000,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -14035,17 +14110,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -14146,17 +14226,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -16099,17 +16184,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -16210,17 +16300,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -16315,17 +16410,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
@@ -16577,17 +16677,22 @@ PrefabInstance:
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxGroundAngle
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
       propertyPath: maxAirJumps
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286163272062778828, guid: 4587e7c453ca7a1438893f0802266bac,
+        type: 3}
+      propertyPath: maxSnapSpeed
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8286163272062778830, guid: 4587e7c453ca7a1438893f0802266bac,
         type: 3}
